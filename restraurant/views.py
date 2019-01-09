@@ -49,6 +49,7 @@ def main_table(request):
             temp['star'] = i.value_review
 
         temp['web'] = i.website
+        temp['map'] = "https://"+i.google_map
         data.append(temp)
 
     content = {"data": data}
