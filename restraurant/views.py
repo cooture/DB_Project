@@ -71,6 +71,7 @@ def sectable(request):
             temp['add'] = i.street_address
             temp['phone'] = i.phone
             temp['web'] = i.website
+            temp['map'] = i.google_map
             data.append(temp)
 
     content = {"data": data}
