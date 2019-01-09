@@ -1,0 +1,26 @@
+<thead>
+<tr>
+    <th>餐厅名字</th>
+    <th>餐厅类型</th>
+    <th>街道信息</th>
+
+    <th>
+        <i class="ace-icon fa fa-clock-o bigger-110"></i>
+        电话号码
+    </th>
+</tr>
+</thead>
+
+<tbody>
+    {% for ps in data %}
+    <tr>
+        <td>
+            <a href={{ ps.web }} >{{ ps.name }}</a>
+        </td>
+        <td>{{ ps.type }}</td>
+        <td>{{ ps.add }}</td>
+        <td>{{ ps.phone }}</td>
+    </tr>
+    {% endfor %}
+
+</tbody>

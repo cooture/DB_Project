@@ -93,7 +93,7 @@
                             </div><!-- /.nav-search -->
 
                             <i class="ace-icon fa fa-hand-o-right icon-animated-hand-pointer blue"></i>
-                            <a href="#modal-table" role="button" class="blue" onclick="form2();" data-toggle="modal">点击弹出层表格</a>
+                            <button  class="btn bule bulabulabtn" role="button" href="#modal-table" data-toggle="modal">点击弹出层表格</button>
                         </h4>
 
                         <div class="hr hr-18 dotted hr-double"></div>
@@ -246,7 +246,7 @@
                                     </div>
 
                                     <div class="modal-body no-padding">
-                                        <table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
+                                        <table id="woctable" class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
                                             <thead>
                                             <tr>
                                                 <th>餐厅名字</th>
@@ -399,6 +399,17 @@
             $.post("/maintable", {'Restuarant_type': Restuarant_type,'Restuarant_sort':Restuarant_sort},     //post函数到后端
                 function (data, status) {              //回调函数
                     $("#pstable").html(data);
+
+                });
+            $(".table-responsive").slideDown("slow");
+        });
+        $(".bulabulabtn").click(function(){
+            var searchTEXT = document.getElementById("search").value;
+
+            $.post("/sectable", {'searchTEXT': searchTEXT},     //post函数到后端
+                function (data, status) {              //回调函数
+                    $("#woctable").html(data);
+
 
                 });
             $(".table-responsive").slideDown("slow");
