@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>餐厅信息检索</title>
+    <title>Restaurant information</title>
     <meta name="description" content="Restyling jQuery UI Widgets and Elements" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <link rel="stylesheet" href="static/assets/css/bootstrap.min.css" />
@@ -54,7 +54,7 @@
             <ul class="breadcrumb">
 
                 <li>
-                    <a href="javascript:void(0)">餐厅信息网站</a>
+                    <a href="javascript:void(0)">Restaurant Collector website</a>
                 </li>
 
             </ul><!-- /.breadcrumb -->
@@ -86,14 +86,14 @@
                             <div class="nav-search" id="nav-search">
                                 <form class="form-search">
 										<span class="input-icon">
-											<input type="text" id="search" placeholder="请输入餐厅名字" class="nav-search-input" id="nav-search-input" autocomplete="off" />
+											<input type="text" id="search" placeholder="please input the restaurant name" class="nav-search-input" id="nav-search-input" autocomplete="off" />
 											<i class="ace-icon fa fa-search nav-search-icon"></i>
 										</span>
                                 </form>
                             </div><!-- /.nav-search -->
 
                             <i class="ace-icon fa fa-hand-o-right icon-animated-hand-pointer blue"></i>
-                            <button  class="btn bule bulabulabtn" role="button" href="#modal-table" data-toggle="modal">点击弹出层表格</button>
+                            <button  class="btn bule bulabulabtn" role="button" href="#modal-table" data-toggle="modal">Click and Show</button>
                         </h4>
 
                         <div class="hr hr-18 dotted hr-double"></div>
@@ -102,12 +102,12 @@
                             <div class="col-xs-12">
 
                                 <div class="table-header">
-                                    餐厅检索
+                                    Restaurant information
                                 </div>
 
                                 <table width="100%" class="CSSearchTbl" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td class="left">餐厅类型：</td>
+                                        <td class="left">Type：</td>
                                         <td class="right">
                                             <select id="type">
                                                 <option>American</option>
@@ -122,7 +122,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="left">排序依据：</td>
+                                        <td class="left">Ortder by：</td>
                                         <td class="right">
                                             <select id="sort">
                                                 <option>average_review</option>
@@ -137,7 +137,7 @@
                                 </table>
                                 <table width="100%" class="CSSearchTb1" cellpadding="0" cellspacing="0">
                                     <button class="btn btn-primary pull-left col-sm-12 tbl-search"  data-dismiss="modal">
-                                        开始搜索
+                                        Start
                                         <i class="ace-icon fa fa-search"></i>
                                     </button>
                                 </table>
@@ -154,7 +154,7 @@
                                                     <span class="lbl"></span>
                                                 </label>
                                             </th>
-                                            <th>餐厅名字</th>
+                                            <th>Restaurant Name</th>
                                             <th>餐厅类型</th>
                                             <th class="hidden-480">接道信息</th>
                                             <th>
@@ -241,7 +241,7 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                                 <span class="white">&times;</span>
                                             </button>
-                                            餐厅查询系统
+                                            Restaurant Search
                                         </div>
                                     </div>
 
@@ -320,7 +320,7 @@
             <!-- #section:basics/footer -->
             <div class="footer-content">
 						<span class="bigger-120">
-							 餐厅信息检索 DB_Project
+                            DB_Project
 						</span>
             </div>
 
@@ -396,10 +396,11 @@
         $(".tbl-search").click(function(){
             var Restuarant_type = document.getElementById("type").value;
             var Restuarant_sort = document.getElementById("sort").value;
-            $.post("/maintable", {'Restuarant_type': Restuarant_type,'Restuarant_sort':Restuarant_sort},     //post函数到后端
-                function (data, status) {              //回调函数
+            $.post("/maintable",
+                {'Restuarant_type': Restuarant_type,
+                    'Restuarant_sort':Restuarant_sort},
+                function (data, status) {
                     $("#pstable").html(data);
-
                 });
             $(".table-responsive").slideDown("slow");
         });

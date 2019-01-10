@@ -5,7 +5,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.index),
-    path('maintable',views.main_table),
-    path('sectable',views.sectable)
-
+    path('maintable', views.main_table),
+    path('sectable', views.sectable)
 ]

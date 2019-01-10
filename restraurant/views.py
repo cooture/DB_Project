@@ -25,18 +25,13 @@ def main_table(request):
     Restuarant_sort = request.POST['Restuarant_sort']
     print(Restuarant_sort + "  " + Restuarant_type)
 
-    all = Restaurant.objects.all()
     res = Restaurant.objects.filter(restaurant_type=Restuarant_type).order_by("-" + Restuarant_sort)
 
     data = []
 
     for i in res:
-        temp = {}
-        temp['name'] = i.name
-        temp['type'] = i.restaurant_type
-        temp['add'] = i.street_address
-        temp['info'] = i.description
-        temp['phone'] = i.phone
+        temp = {'name': i.name, 'type': i.restaurant_type, 'add': i.street_address, 'info': i.description,
+                'phone': i.phone}
         if Restuarant_sort == "average_review":
             temp['star'] = i.average_review
         elif Restuarant_sort == "food_review":
@@ -49,7 +44,7 @@ def main_table(request):
             temp['star'] = i.value_review
 
         temp['web'] = i.website
-        temp['map'] = "https://"+i.google_map
+        temp['map'] = "https://" + i.google_map
         data.append(temp)
 
     content = {"data": data}
@@ -62,16 +57,15 @@ def sectable(request):
     search = request.POST['searchTEXT']
     print(search)
     data = []
-    if (search != ""):
+    if search != "":
         res = Restaurant.objects.filter(name__contains=search)
         for i in res:
-            temp = {}
-            temp['name'] = i.name
-            temp['type'] = i.restaurant_type
-            temp['add'] = i.street_address
-            temp['phone'] = i.phone
-            temp['web'] = i.website
-            temp['map'] = "https://"+i.google_map
+            temp = {'name': i.name,
+                    'type': i.restaurant_type,
+                    'add': i.street_address,
+                    'phone': i.phone,
+                    'web': i.website,
+                    'map': "https://" + i.google_map}
             data.append(temp)
 
     content = {"data": data}
